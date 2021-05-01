@@ -6,17 +6,12 @@ export function objects() {
 
   (function () {
 
-    let pattern = "НАЗВАНИЕ ЯП - язык программирования выпущенный в ГОД ВЫПУСКА ЯП году. Автором языка стал АВТОР ЯП - РОД ДЕЯТЕЛЬНОСТИ АВТОРА ЯП. Файлы программ, написанных на НАЗВАНИЕ ЯП, могут иметь расширение РАСШИРЕНИЯ ФАЙЛОВ. НАЗВАНИЕ ЯП испытал влияние ДЛИННА СПИСКА С ЯП ОКАЗАВШИМ ВЛИЯНИЕ языков программирования: СПИСОК ЯП ОКАЗАВШИХ ВЛИЯНИЕ. НАЗВАНИЕ ЯП повлиял на ЯП ИСПЫТАВШИЕ ВЛИЯНИЕ."
-    // pattern.trim();
+    let timeCounter = 10;
 
-    // let textContainer = [];
-
-    let timeCounter = 1;
-
-    // Приветствие
+    // Приветствие.
     console.log(`Информация о языках программирования будет предоставлена через ${timeCounter} секунд.`);
 
-    // Отсчёт
+    // Отсчёт времени.
     const timer = setInterval(() => {
 
       if (timeCounter <= 1) {
@@ -26,37 +21,67 @@ export function objects() {
         return;
       }
 
+      // Вывод счётчика.
       console.log(`Осталось ${--timeCounter}...`);
     }, 1000);
 
+    // Основная функция.
     function showText() {
       console.log("Какая есть информация...");
       let i = 0;
 
+      // Количество выводов на экран.
       let counter = setInterval(() => {
         if (i >= developers.length) {
           clearInterval(counter);
           return;
         }
 
-        let message = [];
-
+        // Вывод расширений языка.
         let extensions = data[i].filenameExtensions.split(", ")
                                                    .map(item => (`".${item}"`))
                                                    .join(", ");
 
-        let languages = data[i].affectedBy;
+        // Проверка количества языков программирования, на которых повлиял описываемый язык программирования.
+        let affectedlanguages = data[i].affectedBy;
 
         if (data[i].affectedBy.length > 4) {
-          languages = data[i].affectedBy.slice(0,4).map(item => (`${item} и другие языки программирования`));
+          affectedlanguages = data[i].affectedBy.slice(0,4).map((item,index,array) => {
+            if (index == 0) return `${item}`;
+            return ` ${item}`;
+          });
+          affectedlanguages += " и другие языки программирования";
+        } else {
+          affectedlanguages = data[i].affectedBy.slice(0,data[i].affectedBy.length).map((item,index,array) => {
+            if (index == 0) return `${item}`;
+            return ` ${item}`;
+          });
         }
 
-        message.push(`${data[i].name} - язык программирования выпущенный в ${data[i].year} году.
-                      Автором языка стал ${developers[i].name} - ${developers[i].work}.
-                      Файлы программ, написанных на ${data[i].name}, могут иметь расширение: ${extensions}.
-                      ${data[i].name} испытал влияние ${data[i].influencedBy.length} языков программирования: ${data[i].influencedBy}. ${data[i].name} повлиял на ${languages}.`);
+        // Проверка количества языков программирования, повлиявших на описываемый язык программирования.
+        let influencedLanguages = data[i].influencedBy;
 
-        console.log(message.toString());
+        if (data[i].influencedBy.length > 4) {
+          influencedLanguages = data[i].influencedBy.slice(0,4).map((item,index,array) => {
+            if (index == 0) return `${item}`;
+            return ` ${item}`;
+          });
+          influencedLanguages += " и других языков программирования";
+        } else {
+          influencedLanguages = data[i].influencedBy.slice(0,data[i].influencedBy.length).map((item,index,array) => {
+            if (index == 0) return `${item}`;
+            return ` ${item}`;
+          });
+        }
+
+        // Вывод сообщения.
+        console.log(
+          `${data[i].name} - язык программирования выпущенный в ${data[i].year} году.
+                   Автором языка стал ${developers[i].name} - ${developers[i].work}.
+                   Файлы программ, написанных на ${data[i].name}, могут иметь расширение: ${extensions}.
+                   ${data[i].name} испытал влияние ${data[i].influencedBy.length} языков программирования: ${influencedLanguages}.
+                   ${data[i].name} повлиял на: ${affectedlanguages}.`
+                 );
 
         i++;
       }, 2000);
