@@ -76,64 +76,65 @@ export function numbers(max) {
   // Реализована в задачах №1-3.
 
   // Задача №5.
-  let randomNumber = Math.floor(1 + Math.random() * max);
-  console.log(randomNumber);
 
-  let userAnswer = prompt(`Загадано целое число от 1 до ${max}. Если у Вам нечем заняться - попробуйте отгадать его.`);
-  let userAttempts = 1;
-  let userAttemptsTotal = 1;
-  let userDecision = false;
-
-  while (userAnswer != randomNumber) {
-
-        userAttempts += 1;
-        userAttemptsTotal += 1;
-
-        if (isNaN(Number(userAnswer)) || userAnswer == "") {
-          alert("Какого?! Нужно ввести число!");
-          userAttempts -= 1;
-          userAttemptsTotal -= 1;
-        } else if (userAnswer == 0) {
-          alert("Но, но, ноооль! Не надо ноля.");
-          userAttempts -= 1;
-          userAttemptsTotal -= 1;
-        } else if (userAnswer % 1) {
-          alert("Целое! Целое число нужно!");
-          userAttempts -= 1;
-          userAttemptsTotal -= 1;
-        } else if (userAnswer < 1 || userAnswer > max) {
-          alert(`Пу-пу-пууу... Число от 1 до ${max}.`);
-          userAttempts -= 1;
-          userAttemptsTotal -= 1;
-        } else {
-
-          if (userAnswer > randomNumber) {
-            alert("Жаль! Но Вы не угадали - это число меньше введённого Вами.");
-          } else {
-            alert("Жаль! Но Вы не угадали - это число больше введённого Вами.");
-          }
-
-          if (userAttempts > 5) {
-            userDecision = confirm("Вы не устали? Может, ну, его в баньку!");
-
-            if (userDecision) {
-              return;
-            } else {
-              userAttempts = 0;
-              alert("Тогда пляшем дальше!");
-            }
-
-          }
-        }
-
-        userAnswer = prompt(`Загадано целое число от 1 до ${max}. Если у Вам нечем заняться - попробуйте отгадать его.`);
-  }
-
-  if (userAttemptsTotal == 1) {
-    alert(`Что ты такое? Отгадал после ${userAttemptsTotal} раза! Это число ${randomNumber}!`);
-  } else {
-    alert(`Красава! Получилось отгадать после ${userAttemptsTotal} раза! Это именно число ${randomNumber}!`);
-  }
+  // let randomNumber = Math.floor(1 + Math.random() * max);
+  // console.log(randomNumber);
+  //
+  // let userAnswer = prompt(`Загадано целое число от 1 до ${max}. Если у Вам нечем заняться - попробуйте отгадать его.`);
+  // let userAttempts = 1;
+  // let userAttemptsTotal = 1;
+  // let userDecision = false;
+  //
+  // while (userAnswer != randomNumber) {
+  //
+  //       userAttempts += 1;
+  //       userAttemptsTotal += 1;
+  //
+  //       if (isNaN(Number(userAnswer)) || userAnswer == "") {
+  //         alert("Какого?! Нужно ввести число!");
+  //         userAttempts -= 1;
+  //         userAttemptsTotal -= 1;
+  //       } else if (userAnswer == 0) {
+  //         alert("Но, но, ноооль! Не надо ноля.");
+  //         userAttempts -= 1;
+  //         userAttemptsTotal -= 1;
+  //       } else if (userAnswer % 1) {
+  //         alert("Целое! Целое число нужно!");
+  //         userAttempts -= 1;
+  //         userAttemptsTotal -= 1;
+  //       } else if (userAnswer < 1 || userAnswer > max) {
+  //         alert(`Пу-пу-пууу... Число от 1 до ${max}.`);
+  //         userAttempts -= 1;
+  //         userAttemptsTotal -= 1;
+  //       } else {
+  //
+  //         if (userAnswer > randomNumber) {
+  //           alert("Жаль! Но Вы не угадали - это число меньше введённого Вами.");
+  //         } else {
+  //           alert("Жаль! Но Вы не угадали - это число больше введённого Вами.");
+  //         }
+  //
+  //         if (userAttempts > 5) {
+  //           userDecision = confirm("Вы не устали? Может, ну, его в баньку!");
+  //
+  //           if (userDecision) {
+  //             return;
+  //           } else {
+  //             userAttempts = 0;
+  //             alert("Тогда пляшем дальше!");
+  //           }
+  //
+  //         }
+  //       }
+  //
+  //       userAnswer = prompt(`Загадано целое число от 1 до ${max}. Если у Вам нечем заняться - попробуйте отгадать его.`);
+  // }
+  //
+  // if (userAttemptsTotal == 1) {
+  //   alert(`Что ты такое? Отгадал после ${userAttemptsTotal} раза! Это число ${randomNumber}!`);
+  // } else {
+  //   alert(`Красава! Получилось отгадать после ${userAttemptsTotal} раза! Это именно число ${randomNumber}!`);
+  // }
 
 
 }
