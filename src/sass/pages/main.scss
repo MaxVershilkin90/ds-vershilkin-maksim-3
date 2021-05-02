@@ -469,7 +469,7 @@
   // Position
   position: absolute;
   top:0;
-  display: none; // flex
+  display: flex; // flex
   justify-content: center;
   align-items: center;
   // Block model
@@ -487,6 +487,11 @@
   &__wrap {
     // Position
     position: relative;
+
+    @media (max-width:480px) {
+      // Block model
+      width: 100%;
+    }
   }
 
   &__title {
@@ -509,6 +514,12 @@
     background: url("/imgs/img_icon_feedback_close.svg") center no-repeat;
     // Animation
     transition: opacity ease-in .4s;
+
+    @media (max-width:480px) {
+      // Position
+      top: -45px;
+      left: 20px;
+    }
 
     &:hover {
       // Stylization
@@ -536,6 +547,15 @@
     // Stylization
     outline: solid 2.5px $color_black;
     background-color: $color_white;
+
+    @media (max-width:480px) {
+      // Block model
+      width: auto;
+      padding: 20px;
+      // Stylization
+      outline: none;
+    }
+
   }
 
   &__label {
