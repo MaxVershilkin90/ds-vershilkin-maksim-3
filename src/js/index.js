@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // numbers(50);
   // functions();
-  objects();
+  // objects();
 
 })
