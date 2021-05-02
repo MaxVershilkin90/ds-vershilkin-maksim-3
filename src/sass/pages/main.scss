@@ -608,7 +608,7 @@
   // Position
   position: absolute;
   top:0;
-  display: none; // flex
+  display: flex; // flex
   justify-content: center;
   align-items: center;
   // Block model
@@ -649,6 +649,12 @@
     // Animation
     transition: opacity ease-in .4s;
 
+    @media (max-width:770px) {
+      // Position
+      top: -45px;
+      left: 20px;
+    }
+
     &:hover {
       // Stylization
       cursor: pointer;
@@ -676,6 +682,18 @@
     // Stylization
     outline: solid 2.5px $color_black;
     background-color: $color_white;
+
+    @media (max-width:770px) {
+      // Block model
+      padding: 20px;
+      // Stylization
+      outline: 20px;
+    }
+
+    @media (max-width:680px) {
+      // Block model
+      width: 100%;
+    }
   }
 
   &__item {
@@ -687,6 +705,12 @@
     width: 50%;
     margin: 0 20px 0 0;
     box-sizing: border-box;
+
+    @media (max-width:450px) {
+      // Block model
+      width: auto;
+      margin-right: 0;
+    }
 
     &:nth-child(even) {
       // Block model
@@ -705,6 +729,12 @@
     display: flex;
     // Block model
     width: 100%;
+
+    @media (max-width:450px) {
+      // Block model
+      flex-flow: column;
+    }
+
   }
 
   &__agreement {
